@@ -2,11 +2,14 @@ import React from 'react'
 
 const PreviewPost = (props) => {
 	return (
-		<div>
-			<div>{props.data.title}</div>
-			<div>{props.data.users_id}</div>
-			<div>{props.data.tag}</div>
-		</div>
+		<div className= "PreviewPost">
+            <div className="PreviewAuthorTag">
+                <span className="author">Author ID: {props.data.users_id}</span>
+                <span>Character: {props.data.tag}</span>
+            </div>
+        	<div className= "PreviewTitle" href="#"><h5>{props.data.title}</h5></div>
+        	<div className= "PreviewComments" href="#">{props.data.comments || 0} Comments</div>
+        </div>
 		)
 }
 

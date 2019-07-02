@@ -35,6 +35,11 @@ class Navbar extends Component {
                         Logout
                     </a>
                 </li>
+                <li className="nav-item">
+                    <Link to="/newpost" className="nav-link">
+                        Create Post
+                    </Link>
+                </li>
             </ul>
         )
 
