@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 import PreviewPost from './PreviewPost'
 
@@ -33,20 +34,25 @@ class Landing extends Component {
                         <h1 className="text-center">WELCOME</h1>
                     </div>
                 </div>
-                <div className="jumbotron mt-5">
+                {/*<div className="jumbotron mt-5">*/}
                     <div className="col-sm-8 mx-auto">
                         <h1 className="text-center">Latest posts</h1>
-                        {/* Here comienza la maginha*/}
+
                         <div className="latest-posts">
                             {this.state.lastPosts && this.state.lastPosts.map((post, index) => {
-                                return <PreviewPost data={post} key={index}/>
+                                return <Link to={`/posts/` + post.id} key={index}>
+                                    <PreviewPost 
+                                        data={post} 
+                                        key={index}
+                                        />
+                                    </Link>
                             })}
                         </div>
                     </div>
-                </div>
+                {/*</div>*/}
             </div>
         )
     }
 }
 
-export default Landing
+export default withRouter(Landing)

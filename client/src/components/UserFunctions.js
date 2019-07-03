@@ -37,3 +37,14 @@ export const getLastNPosts = nPosts => {
             console.log(err)
         })*/
 }
+
+export const getPostById = posts_Id => {
+    return axios
+        .get('/posts/' + posts_Id)
+        /*.then(res => {
+            return res.data
+        })
+        .catch(err => {
+            console.log(err)
+        })*/
+}

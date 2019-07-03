@@ -25,6 +25,14 @@ const getPostsByUsersId = (u) => {
     })
 }
 
+const getPostById = (p) => {
+    return Post.findOne({
+        where: {
+            id: p
+        }
+    })
+}
+
 const getLastNPosts = (nPosts) => {
     return Post.findAll({
       limit: parseInt(nPosts, 10),
@@ -44,6 +52,7 @@ const getCommentsByPostsId = (p) => {
 
 module.exports = {
     getPostsByUsersId,
+    getPostById,
     getCommentsByPostsId,
     getLastNPosts
 }
