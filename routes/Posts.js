@@ -29,6 +29,20 @@ posts.post('/new', (req, res) => {
                         })
 })
 
+posts.get('/:posts_Id', (req, res, next) => {
+    Lurker.getPostById(req.params.posts_Id)
+    .then(post => {
+            if (post) {
+               res.send(post)
+            } else {
+                throw "Post does not exist"
+            }
+        })
+        .catch(err => {
+            throw err
+        })
+})
+
 posts.get('/:id/comments', (req, res, next) => {
     Lurker.getCommentsByPostsId(req.params.id)
     .then(comments => {

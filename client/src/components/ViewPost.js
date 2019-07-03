@@ -2,13 +2,7 @@ import React, { Component } from 'react'
 
 import PostComment from './PostComment'
 
-const data = 
-    {
-        "title": "Palus counter is amazing for neutral game, opinions?",
-        "author": "Admin",
-        "tag": "Palutena",
-        "content": "Paultena is a top tier waifu wtf zxc zxc zczx c czx czxczx czx czxczczxc zxczx czx czxczxczxczzcxczxc zx czxczx czx cc zxczczc   z czx czxczxczczczcz "
-    }
+import { getPostById } from './UserFunctions'
 
 const data1=[
     {
@@ -29,23 +23,38 @@ class ViewPost extends Component {
         }
     }
 
+    componentDidMount () {
+        getPostById(this.props.match.params.posts_id)
+        .then(res => {
+            this.setState(
+                {post: res.data}
+                )
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
     render () {
         return (
             <div className="container">
                 <div className="jumbotron bg-white text-black mt-5">
                     <div className="col-sm-8 mx-auto">
-                        <h1 className="PostTitle">{data.title}</h1>
+                        <h1 className="PostTitle">{this.state.post.title}</h1>
                     </div>
                     <table className="table col-md-6 mx-auto">
                         <tbody>
                             <tr>
-                                <td className= "">{data.content}</td>
+                                <td className= "">{this.state.post.content}</td>
                             </tr>
                             <tr>
-                                <td className="TagAuthor">Charater: {data.tag}</td>
+                                <td className="TagAuthor">Charater: {this.state.post.tag}</td>
                             </tr>
                             <tr>
-                                <td className="TagAuthor">Author: {data.author}</td>
+                                {/*
+                                    TODO: Implement get Author's username by ID
+                                */}
+                                <td className="TagAuthor">Author ID: {this.state.post.author}</td>
                             </tr>
                         </tbody>
                     </table>

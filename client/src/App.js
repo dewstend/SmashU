@@ -21,7 +21,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/newpost" component={NewPost} />
-            <Route exact path="/viewpost" component={ViewPost} />
+            <Route exact path="/posts/:posts_id" component={ViewPost} />
           </div>
         </div>
       </Router>
