@@ -43,3 +43,20 @@ body {
 .CommentTitle{
     text-align: center;
 }
+
+.credits{
+    background: url(edit.svg) no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 30px;
+    width: 22px;
+    border-bottom-color: white;
+    border-block-end-color: white;
+    border-color: white;
+    box-shadow: #ffffff;
+}
+
+.credits-hover{
+    text-emphasis: Edit;
+}

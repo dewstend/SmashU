@@ -58,6 +58,7 @@ class ViewPost extends Component {
                             </tr>
                         </tbody>
                     </table>
+                    <button class="credits"></button>
                 </div>
 
 
