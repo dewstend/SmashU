@@ -59,10 +59,11 @@ class NewPost extends Component {
                                 <select type="tag"
                                     className="form-control"
                                     name="tag"
+                                    placeholder="Character"
                                     value={this.state.tag}
                                     onChange={this.onChange}
                                 >
-                                <option></option>
+                                <option value="" disabled selected>Select your option</option>
                                 <option>Mario</option>
                                 <option>Kirby</option>
                                 <option>Palutena</option>

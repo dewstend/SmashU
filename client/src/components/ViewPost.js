@@ -4,6 +4,30 @@ import PostComment from './PostComment'
 
 import { getPostById, getCommentsByPostsId } from './UserFunctions'
 
+import { Link, withRouter } from 'react-router-dom'
+
+const swal = require('sweetalert2')
+
+function ConfirmDelete(){
+	swal.fire({   title: "This post will be deleted permanently!",   
+    text: "Are you sure to proceed?",   
+    type: "warning",   
+    showCancelButton: true,   
+    confirmButtonColor: "#DD6B55",   
+    confirmButtonText: "Yes, Remove the post!",   
+    cancelButtonText: "No, I am not sure!",   
+    closeOnConfirm: false,   
+    closeOnCancel: false }, 
+    function(isConfirm){   
+        if (isConfirm) 
+    {   
+        swal.fire("Account Removed!", "Your account is removed permanently!", "success");   
+        } 
+        else {     
+            swal.fire("Hurray", "Account is not removed!", "error");   
+            } })
+}
+
 class ViewPost extends Component {
     constructor() {
         super()
@@ -37,10 +61,12 @@ class ViewPost extends Component {
             console.log(err)
         })
     }
+    
 
     render () {
         return (
             <div className="container">
+            
                 <div className="jumbotron bg-white text-black mt-5">
                     <div className="col-sm-8 mx-auto">
                         <h1 className="PostTitle">{this.state.post.title}</h1>
@@ -57,7 +83,16 @@ class ViewPost extends Component {
                                 <td className="TagAuthor">Author: {this.state.author}</td>
                             </tr>
                         </tbody>
+
                     </table>
+
+                    <Link to={"/ModifyPost/" + this.state.post.id}>
+                        <button title="Edit your post" class="EditButton"></button>
+                    </Link>
+                    
+                    <button type= "button" title="Delete your post"  class="DeleteButton" element onclick= "ConfirmDelete(); return false;"></button>
+
+                  
                 </div>
 
 
@@ -69,9 +104,10 @@ class ViewPost extends Component {
                                 return <PostComment data={comment} key={index}/>
                             })}
                 </div>
+                
             </div>
         )
     }
 }
 
-export default ViewPost
+export default withRouter(ViewPost)
