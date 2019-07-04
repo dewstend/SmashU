@@ -21,6 +21,7 @@
     "mysql2": "^1.6.1",
     "nodemon": "^1.18.3",
     "react-router-dom": "^4.3.1",
-    "sequelize": "^5.9.0"
+    "sequelize": "^5.9.0",
+    "sweetalert2": "^8.13.0"
   }
 }

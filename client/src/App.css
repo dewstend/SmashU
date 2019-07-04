@@ -44,7 +44,7 @@ body {
     text-align: center;
 }
 
-.credits{
+.EditButton{
     background: url(edit.svg) no-repeat top left;
     background-size: contain;
     cursor: pointer;
@@ -53,7 +53,22 @@ body {
     width: 22px;
     border-bottom-color: white;
     border-block-end-color: white;
-    border-color: white;
+    border: white;
+    box-shadow: #ffffff;
+    margin-right: 30px;
+    padding-bottom: 0%;
+}
+
+.DeleteButton{
+    background: url(delete.svg) no-repeat top left;
+    background-size: contain;
+    cursor: pointer;
+    display: inline-block;
+    height: 30px;
+    width: 22px;
+    border-bottom-color: white;
+    border-block-end-color: white;
+    border: white;
     box-shadow: #ffffff;
 }
 
