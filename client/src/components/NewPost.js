@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 
+import { createPost } from './UserFunctions'
+import jwt_decode from 'jwt-decode'
+
 class NewPost extends Component {
     constructor() {
         super()
         this.state = {
             title: '',
             content: '',
-            tag: ''
+            tag: '',
+            users_id: jwt_decode(localStorage.usertoken).id
         }
 
         this.onChange = this.onChange.bind(this)
@@ -19,16 +23,18 @@ class NewPost extends Component {
 
     onSubmit (e) {
         e.preventDefault()
-
         const post = {
             title: this.state.title,
-            content: this.state.tag,
-            tag: this.state.tag
+            content: this.state.content,
+            tag: this.state.tag,
+            users_id: this.state.users_id
         }
-
-        //TODO
-        console.log(new Error("To be Implemented, save to DB: "))
-        console.log(post)
+        createPost(post).then(res => {
+                if (res) {
+                    this.props.history.push(`/posts/`+res.data.posts_id)
+                }
+            }
+        )
     }
 
     render () {
@@ -56,6 +62,7 @@ class NewPost extends Component {
                                     value={this.state.tag}
                                     onChange={this.onChange}
                                 >
+                                <option></option>
                                 <option>Mario</option>
                                 <option>Kirby</option>
                                 <option>Palutena</option>

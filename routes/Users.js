@@ -69,10 +69,10 @@ users.post('/login', (req, res) => {
         })
 })
 
-users.get('/:username', (req, res, next) => {
+users.get('/:users_id', (req, res, next) => {
     User.findOne({
         where: {
-            username: req.params.username
+            id: req.params.users_id
         }
     })
         .then(user => {
@@ -90,6 +90,22 @@ users.get('/:username', (req, res, next) => {
 users.get('/:id/posts', (req, res, next) => {
 
     Lurker.getPostsByUsersId(req.params.id)
+    .then(posts => {
+            if (posts) {
+               res.send(posts)
+            } else {
+                throw "User does not exist"
+            }
+        })
+        .catch(err => {
+            throw err
+        })
+
+})
+
+users.get('/:id/posts', (req, res, next) => {
+
+    Lurker.getUsernameByUsersId(req.params.id)
     .then(posts => {
             if (posts) {
                res.send(posts)

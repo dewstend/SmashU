@@ -2,24 +2,15 @@ import React, { Component } from 'react'
 
 import PostComment from './PostComment'
 
-import { getPostById } from './UserFunctions'
-
-const data1=[
-    {
-        "content": "erga",
-        "author": "Admin"
-    },
-    {
-        "content": "erga3",
-        "author": "Admin"
-    }
-]
+import { getPostById, getCommentsByPostsId } from './UserFunctions'
 
 class ViewPost extends Component {
     constructor() {
         super()
         this.state = {
-            post: {}
+            post: {},
+            author: "",
+            comments: []
         }
     }
 
@@ -27,7 +18,19 @@ class ViewPost extends Component {
         getPostById(this.props.match.params.posts_id)
         .then(res => {
             this.setState(
-                {post: res.data}
+                {
+                    post: res.data,
+                    author: res.data.user.username
+                }
+            )
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        getCommentsByPostsId(this.props.match.params.posts_id)
+        .then(res => {
+            this.setState(
+                {comments: res.data}
                 )
         })
         .catch(err => {
@@ -48,13 +51,10 @@ class ViewPost extends Component {
                                 <td className= "">{this.state.post.content}</td>
                             </tr>
                             <tr>
-                                <td className="TagAuthor">Charater: {this.state.post.tag}</td>
+                                <td className="TagAuthor">Character: {this.state.post.tag}</td>
                             </tr>
                             <tr>
-                                {/*
-                                    TODO: Implement get Author's username by ID
-                                */}
-                                <td className="TagAuthor">Author ID: {this.state.post.author}</td>
+                                <td className="TagAuthor">Author: {this.state.author}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -65,8 +65,9 @@ class ViewPost extends Component {
                     <div className="col-sm-8 mx-auto">
                         <h4 className="CommentTitle">Comment Section</h4>
                     </div>
-                    <PostComment data={data1[0]}/>
-                    <PostComment data={data1[1]}/>
+                    {this.state.comments && this.state.comments.map((comment, index) => {
+                                return <PostComment data={comment} key={index}/>
+                            })}
                 </div>
             </div>
         )

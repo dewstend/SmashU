@@ -9,7 +9,7 @@ const PostComment = (props) => {
                                 <td className= "CommentContent">{props.data.content}</td>
                             </tr>
                             <tr>
-                                <td className="CommentAuthor">Author: {props.data.author}</td>
+                                <td className="CommentAuthor">Author: {props.data.user.username}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -17,12 +17,15 @@ class Landing extends Component {
         getLastNPosts(5)
         .then(res => {
             this.setState(
-                {lastPosts: res.data}
-                )
+                {
+                    lastPosts: res.data
+                }
+            )
         })
         .catch(err => {
             console.log(err)
-        })
+        })      
+
     }
 
 
@@ -42,7 +45,7 @@ class Landing extends Component {
                             {this.state.lastPosts && this.state.lastPosts.map((post, index) => {
                                 return <Link to={`/posts/` + post.id} key={index}>
                                     <PreviewPost 
-                                        data={post} 
+                                        data={post}
                                         key={index}
                                         />
                                     </Link>

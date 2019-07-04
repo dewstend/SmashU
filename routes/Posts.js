@@ -22,7 +22,12 @@ posts.post('/new', (req, res) => {
 
     Post.create(postData)
                         .then(post => {
-                            res.json({ status: post.title + ' posted' })
+                            res.json(
+                                { 
+                                    status: post.title + ' posted',
+                                    posts_id: post.id
+                                }
+                            )
                         })
                         .catch(err => {
                             res.send('error1: ' + err)

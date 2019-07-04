@@ -4,7 +4,9 @@ const PreviewPost = (props) => {
 	return (
 		<div className= "PreviewPost">
             <div className="PreviewAuthorTag">
-                <span className="author">Author ID: {props.data.users_id}</span>
+                <span className="author">Author: {
+                    props.data.user.username
+                }</span>
                 <span>Character: {props.data.tag}</span>
             </div>
         	<div className= "PreviewTitle" href="#"><h5>{props.data.title}</h5></div>
