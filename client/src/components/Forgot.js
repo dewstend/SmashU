@@ -15,7 +15,7 @@ class Forgot extends Component {
     render () {
         return (
             <div>
-                <FirstSte recuperation={this.state.recuperationProcess}/>
+                <FirstStep recuperation={this.state.recuperationProcess}/>
             </div>
         )
     }
