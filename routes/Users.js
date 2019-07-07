@@ -16,13 +16,13 @@ users.post('/register', (req, res) => {
     
     const userData = {
         username: req.body.username,
-        email: req.body.email,
+        answer: req.body.answer,
         password: req.body.password
     }
 
     User.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username
         }
     })
         .then(user => {
@@ -31,7 +31,7 @@ users.post('/register', (req, res) => {
                     userData.password = hash
                     User.create(userData)
                         .then(user => {
-                            res.json({ status: user.email + ' registered' })
+                            res.json({ status: user.username + ' registered' })
                         })
                         .catch(err => {
                             res.send('error1: ' + err)
@@ -49,7 +49,7 @@ users.post('/register', (req, res) => {
 users.post('/login', (req, res) => {
     User.findOne({
         where: {
-            email: req.body.email
+            username: req.body.username
         }
     })
         .then(user => {

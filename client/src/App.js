@@ -9,6 +9,8 @@ import Profile from './components/Profile'
 import NewPost from './components/NewPost'
 import ViewPost from './components/ViewPost'
 import ModifyPost from './components/ModifyPost'
+import Forgot from './components/Forgot'
+import ForgotCorrect from './components/ForgotCorrect'
 
 class App extends Component {
   render () {
@@ -24,6 +26,8 @@ class App extends Component {
             <Route exact path="/newpost" component={NewPost} />
             <Route exact path="/posts/:posts_id" component={ViewPost} />
             <Route exact path="/modifypost/:posts_id" component={ModifyPost} />
+            <Route exact path="/forgot" component={Forgot} />
+            <Route exact path="/forgotcorrect" component={ForgotCorrect} />
           </div>
         </div>
       </Router>

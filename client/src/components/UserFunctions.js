@@ -4,7 +4,7 @@ export const register = newUser => {
     return axios
         .post('users/register', {
             username: newUser.username,
-            email: newUser.email,
+            answer: newUser.answer,
             password: newUser.password
         })
         .then(res => {
@@ -15,7 +15,7 @@ export const register = newUser => {
 export const login = user => {
     return axios
         .post('users/login', {
-            email: user.email,
+            username: user.username,
             password: user.password
         })
         .then(res => {

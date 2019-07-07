@@ -11,13 +11,16 @@ module.exports = db.sequelize.define(
             allowNull: false,
         },
         username: {
-            type: Sequelize.STRING
-        },
-        email: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
         },
         password: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        answer: {
+            type: Sequelize.STRING,
+            allowNull: false,
         }
     },
     {
