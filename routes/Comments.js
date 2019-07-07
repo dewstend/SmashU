@@ -22,7 +22,10 @@ comments.post('/new', (req, res) => {
                             res.json({ status: comment.content + ' commented' })
                         })
                         .catch(err => {
-                            res.send('error1: ' + err)
+                            res.send({
+                                error1: err,
+                                commentData
+                            })
                         })
 })
 

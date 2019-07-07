@@ -44,6 +44,10 @@ body {
     text-align: center;
 }
 
+.textcenter {
+    text-align: center;
+}
+
 .EditButton{
     background: url(edit.svg) no-repeat top left;
     background-size: contain;

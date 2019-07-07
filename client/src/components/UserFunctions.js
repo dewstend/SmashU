@@ -37,6 +37,18 @@ export const createPost = newPost => {
         })
 }
 
+export const createComment = newComment => {
+    return axios
+        .post('/comments/new', {
+            content: newComment.content,
+            posts_id: newComment.posts_id,
+            users_id: newComment.users_id
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
 export const getLastNPosts = nPosts => {
     return axios
         .get('posts/last/' + nPosts)

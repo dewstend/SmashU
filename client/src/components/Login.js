@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { login } from './UserFunctions'
-import { Link, withRouter } from 'react-router-dom'
-
-const Center = {
-  textAlign: 'center'
-};
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
     constructor() {
@@ -69,13 +65,13 @@ class Login extends Component {
                                 disabled={this.state.username < 6, this.state.password.length < 8}>
                                 Sign in
                             </button>
-                            <Link to="/forgot" className="nav-link">
-                                Olvidé mi contraseña
-                                <Link to="/forgotcorrect" className="nav-link">
-                                Olvidé mi contraseña
-                            </Link>
-                            </Link>
                         </form>
+                        <Link to="/forgot" className="nav-link">
+                                Olvidé mi contraseña
+                            </Link>
+                            <Link to="/forgotcorrect" className="nav-link">
+                                Olvidé mi correct
+                            </Link>
                     </div>
                 </div>
             </div>

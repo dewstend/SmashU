@@ -22,8 +22,8 @@ module.exports = db.sequelize.define(
             }
         },
         posts_id: {
-            type: Sequelize.INTEGER,
             allowNull: false,
+            type: Sequelize.INTEGER,
             references: {
                 model: 'post',
                 key: 'id'

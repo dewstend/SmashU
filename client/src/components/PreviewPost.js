@@ -10,7 +10,6 @@ const PreviewPost = (props) => {
                 <span>Character: {props.data.tag}</span>
             </div>
         	<div className= "PreviewTitle" href="#"><h5>{props.data.title}</h5></div>
-        	<div className= "PreviewComments" href="#">{props.data.comments || 0} Comments</div>
         </div>
 		)
 }

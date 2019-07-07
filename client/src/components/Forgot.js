@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
 
-const Center = {
-  textAlign: 'center'
-};
-
 class Forgot extends Component {
     constructor() {
         super()

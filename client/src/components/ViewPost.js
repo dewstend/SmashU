@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import PostComment from './PostComment'
 
+import NewCommnent from './NewComment'
+
 import { getPostById, getCommentsByPostsId } from './UserFunctions'
 
 import { Link, withRouter } from 'react-router-dom'
@@ -62,7 +64,6 @@ class ViewPost extends Component {
             console.log(err)
         })
     }
-    
 
     render () {
         return (
@@ -88,21 +89,29 @@ class ViewPost extends Component {
                     </table>
 
                     <Link to={"/ModifyPost/" + this.state.post.id}>
-                        <button title="Edit your post" class="EditButton"></button>
+                        <button title="Edit your post" className="EditButton"></button>
                     </Link>
                     
-                    <button type= "button" title="Delete your post"  class="DeleteButton" element onclick= "confirmation(); return false;"></button>
-}
+                    <button type= "button" title="Delete your post"  className="DeleteButton"></button>
                 </div>
 
+                <div className="jumbotron bg-white text-black mt-5">
+                    <NewCommnent posts_id={this.state.post.id} history={this.props.history}/>
+                </div>
 
                 <div className="jumbotron bg-white text-black mt-5">
                     <div className="col-sm-8 mx-auto">
-                        <h4 className="CommentTitle">Comment Section</h4>
                     </div>
+                    <div className="commentSection">
+                    <h4 className="CommentTitle">Comment Section</h4>
                     {this.state.comments && this.state.comments.map((comment, index) => {
                                 return <PostComment data={comment} key={index}/>
                             })}
+                    {
+                         this.state.comments.length <= 0 &&
+                         <h6 className="textcenter">No comments found.</h6>
+                    }
+                    </div>
                 </div>
                 
             </div>
