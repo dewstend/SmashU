@@ -8,6 +8,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 const swal = require('sweetalert2')
 
+
 function ConfirmDelete(){
 	swal.fire({   title: "This post will be deleted permanently!",   
     text: "Are you sure to proceed?",   
@@ -90,9 +91,8 @@ class ViewPost extends Component {
                         <button title="Edit your post" class="EditButton"></button>
                     </Link>
                     
-                    <button type= "button" title="Delete your post"  class="DeleteButton" element onclick= "ConfirmDelete(); return false;"></button>
-
-                  
+                    <button type= "button" title="Delete your post"  class="DeleteButton" element onclick= "confirmation(); return false;"></button>
+}
                 </div>
 
 

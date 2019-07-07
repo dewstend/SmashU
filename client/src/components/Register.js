@@ -6,7 +6,7 @@ class Register extends Component {
         super()
         this.state = {
             username: '',
-            email: '',
+            answer: '',
             password: ''
         }
 
@@ -23,8 +23,9 @@ class Register extends Component {
 
         const user = {
             username: this.state.username,
-            email: this.state.email,
-            password: this.state.password
+            answer: this.state.answer,
+            password: this.state.password,
+            repassword: this.state.repassword
         }
 
         register(user).then(res => {
@@ -49,19 +50,12 @@ class Register extends Component {
                                     onChange={this.onChange}
                                 />
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="email">Email Address</label>
-                                <input type="email"
-                                    className="form-control"
-                                    name="email"
-                                    placeholder="Enter Email"
-                                    value={this.state.email}
-                                    onChange={this.onChange}
-                                />
-                            </div>
+
                             <div className="form-group">
                                 <label htmlFor="password">Password</label>
                                 <input type="password"
+                                    pattern=".{8,}"   
+                                    required title="8 characters minimum"
                                     className="form-control"
                                     name="password"
                                     placeholder="Enter Password"
@@ -69,10 +63,35 @@ class Register extends Component {
                                     onChange={this.onChange}
                                 />
                             </div>
-                            <button type="submit"
-                                className="btn btn-lg btn-primary btn-block">
+                            <div className="form-group">
+                                <label>Password again</label>
+                                <input type="password"
+                                    pattern=".{8,}"   
+                                    required title="8 characters minimum"
+                                    className="form-control"
+                                    name="repassword"
+                                    placeholder="Enter Password"
+                                    value={this.state.repassword}
+                                    onChange={this.onChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="text">¿Cúal fue tu primer amor?</label>
+                                <input type="text"
+                                    className="form-control"
+                                    name="answer"
+                                    placeholder="Ingrese su respuesta"
+                                    value={this.state.answer}
+                                    onChange={this.onChange}
+                                />
+                            </div>
+
+                           <button type="submit"
+                                   className="btn btn-lg btn-primary btn-block"  id="RegButton"
+                                   disabled={this.state.username.length < 6, this.state.password.length < 8, this.state.answer.length < 1, this.state.password!=this.state.repassword}>
                                 Register
                             </button>
+                            <script>console.log(this.state.email)</script>
                         </form>
                     </div>
                 </div>
