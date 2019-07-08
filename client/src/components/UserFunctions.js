@@ -92,3 +92,14 @@ export const getCommentsByPostsId = posts_Id => {
             console.log(err)
         })*/
 }
+
+export const getPostsByUsersId = users_Id => {
+    return axios
+        .get('users/' + users_Id + '/posts/')
+        /*.then(res => {
+            return res.data
+        })
+        .catch(err => {
+            console.log(err)
+        })*/
+}

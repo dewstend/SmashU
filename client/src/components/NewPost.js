@@ -84,7 +84,8 @@ class NewPost extends Component {
                             </div>
                             <br/>                        
                             <button type="submit"
-                                className="btn btn-lg btn-primary btn-block">
+                                className="btn btn-lg btn-primary btn-block"
+                                disabled={this.state.title < 6, this.state.content < 1}>
                                 Submit
                             </button>
                         </form>

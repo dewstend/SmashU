@@ -103,20 +103,5 @@ users.get('/:id/posts', (req, res, next) => {
 
 })
 
-users.get('/:id/posts', (req, res, next) => {
-
-    Lurker.getUsernameByUsersId(req.params.id)
-    .then(posts => {
-            if (posts) {
-               res.send(posts)
-            } else {
-                throw "User does not exist"
-            }
-        })
-        .catch(err => {
-            throw err
-        })
-
-})
 
 module.exports = users

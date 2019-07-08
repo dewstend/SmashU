@@ -83,3 +83,15 @@ body {
 .FgtPass{
     text-align: center;
 }
+
+#LandJumbo{
+    margin-top: 20px;
+    padding-bottom: 450px;
+    background: url("background.jpg");
+    background-size: cover;
+    color: whitesmoke;
+}
+
+.Logo{
+    background-image: url(logo.png);
+}

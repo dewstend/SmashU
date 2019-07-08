@@ -32,14 +32,14 @@ class Landing extends Component {
     render () {
         return (
             <div className="container">
-                <div className="jumbotron mt-5">
+                <div id= "LandJumbo" className="jumbotron">
                     <div className="col-sm-8 mx-auto">
-                        <h1 className="text-center">WELCOME</h1>
+                        <h1 className="text-center" >BIENVENIDO</h1>
                     </div>
                 </div>
                 {/*<div className="jumbotron mt-5"> comentario*/}
                     <div className="col-sm-8 mx-auto">
-                        <h1 className="text-center">Latest posts</h1>
+                        <h1 className="text-center">Últimas Publicaciones</h1>
 
                         <div className="latest-posts">
                             {this.state.lastPosts && this.state.lastPosts.map((post, index) => {
@@ -53,7 +53,9 @@ class Landing extends Component {
                         </div>
                     </div>
                 {/*</div>*/}
+
             </div>
+
         )
     }
 }

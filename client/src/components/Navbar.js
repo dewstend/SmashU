@@ -13,12 +13,12 @@ class Navbar extends Component {
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/login" className="nav-link">
-                        Login
+                        Iniciar Sesión
                     </Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/register" className="nav-link">
-                        Register
+                        Crear Cuenta
                     </Link>
                 </li>
             </ul>
@@ -27,18 +27,18 @@ class Navbar extends Component {
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <Link to="/profile" className="nav-link">
-                        User
+                        Perfil
+                    </Link>
+                </li>         
+                <li className="nav-item">
+                    <Link to="/newpost" className="nav-link">
+                        Crear Publicación
                     </Link>
                 </li>
                 <li className="nav-item">
                     <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                        Logout
+                        Cerrar Sesión
                     </a>
-                </li>
-                <li className="nav-item">
-                    <Link to="/newpost" className="nav-link">
-                        Create Post
-                    </Link>
                 </li>
             </ul>
         )
@@ -57,10 +57,11 @@ class Navbar extends Component {
 
                 <div className="collapse navbar-collapse justify-content-md-center"
                     id="navbar1">
+                    <img src="../client/src/logo.png" />
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
-                                Home
+                                Inicio
                             </Link>
                         </li>
                     </ul>
