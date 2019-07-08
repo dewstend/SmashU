@@ -95,3 +95,7 @@ body {
 .Logo{
     background-image: url(logo.png);
 }
+
+.navbarLogo {
+    height: 5vh;
+}

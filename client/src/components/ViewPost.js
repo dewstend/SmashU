@@ -95,9 +95,12 @@ class ViewPost extends Component {
                     <button type= "button" title="Delete your post"  className="DeleteButton"></button>
                 </div>
 
-                <div className="jumbotron bg-white text-black mt-5">
-                    <NewCommnent posts_id={this.state.post.id} history={this.props.history}/>
-                </div>
+                {
+                    localStorage.usertoken &&
+                    <div className="jumbotron bg-white text-black mt-5">
+                        <NewCommnent posts_id={this.state.post.id} history={this.props.history}/>
+                    </div>
+                }
 
                 <div className="jumbotron bg-white text-black mt-5">
                     <div className="col-sm-8 mx-auto">

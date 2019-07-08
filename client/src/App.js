@@ -20,7 +20,6 @@ class App extends Component {
           <Navbar />
           <Route exact path="/" component={Landing} />
           <div className="container">
-            <img className="Logo"></img>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />

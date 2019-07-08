@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import logo from '../logo.png'
 
 class Navbar extends Component {
     logOut(e) {
@@ -57,10 +58,11 @@ class Navbar extends Component {
 
                 <div className="collapse navbar-collapse justify-content-md-center"
                     id="navbar1">
-                    <img src="../client/src/logo.png" />
+                    
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
+                                <img src={logo} alt="site logo" className="navbarLogo"/>
                                 Inicio
                             </Link>
                         </li>
