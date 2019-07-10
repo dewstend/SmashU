@@ -76,9 +76,21 @@ const getCommentsByPostsId = (p) => {
     })
 }
 
+const getTotalUsers = () => {
+    return User
+        .findAndCountAll()
+}
+
+const getTotalPosts = () => {
+    return Post
+        .findAndCountAll()
+}
+
 module.exports = {
     getPostsByUsersId,
     getPostById,
     getCommentsByPostsId,
-    getLastNPosts
+    getLastNPosts,
+    getTotalUsers,
+    getTotalPosts
 }

@@ -5,10 +5,12 @@ import jwt_decode from 'jwt-decode'
 
 class Navbar extends Component {
     constructor() { 
-    super() 
-        this.state = { 
-        username: '' } 
+        super() 
+            this.state = { 
+            username: '' 
+        } 
     }
+    
     logOut(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
@@ -17,11 +19,11 @@ class Navbar extends Component {
 
     componentDidMount () {
         if(localStorage.usertoken) {
-          this.setState({
-              username: jwt_decode(localStorage.usertoken).username
-          })
-         }
-         console.log(this.state.username)
+            this.setState({
+                username: jwt_decode(localStorage.usertoken).username
+            })
+        }
+        console.log(this.state.username)
     }
 
     render() {
@@ -108,7 +110,7 @@ class Navbar extends Component {
                         </li>
                     </ul>
                     {localStorage.usertoken ? userLink : loginRegLink}
-                    {this.state.username !== 'feofeo' && adminLink}
+                    {this.state.username == 'admin' && adminLink}
                 </div>
             </nav>
         )

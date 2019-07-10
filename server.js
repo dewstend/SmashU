@@ -12,10 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 var Users = require('./routes/Users')
 var Posts = require('./routes/Posts')
 var Comments = require('./routes/Comments')
+var API = require('./routes/API')
 
 app.use('/users', Users)
 app.use('/posts', Posts)
 app.use('/comments', Comments)
+app.use('/API', API)
 
 app.listen(port, () => {
     console.log("Server is running on port: " + port)
