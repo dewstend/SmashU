@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 const PostComment = (props) => {
     return (
@@ -9,8 +10,11 @@ const PostComment = (props) => {
                                 <td className= "CommentContent">{props.data.content}</td>
                             </tr>
                             <tr>
-                                <td className="CommentAuthor">Author: {props.data.user.username}</td>
+                                <td className="CommentAuthor">Author: {props.data.user.username}
+                                </td>
                             </tr>
+                            <button title="Edit your post" className="EditButtonC"></button>
+                            <button type= "button" title="Delete your post"  className="DeleteButtonC"></button>
                         </tbody>
                     </table>
         </div>

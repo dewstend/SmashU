@@ -60,10 +60,13 @@ class Login extends Component {
                                     onChange={this.onChange}
                                 />
                             </div>
+                            <div className="AlertInvalid">
+                                <p style={{color:'red', textAlign:'center'}}>Credenciales incorrectas. Intente de nuevo</p>
+                            </div>
                             <button type="submit"
                                 className="btn btn-lg btn-primary btn-block"
                                 disabled={this.state.username < 6, this.state.password.length < 8}>
-                                Sign in
+                                Ingresar
                             </button>
                         </form>
                         <Link to="/forgot" className="nav-link">

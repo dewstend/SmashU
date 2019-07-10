@@ -88,8 +88,8 @@ class Register extends Component {
 
                            <button type="submit"
                                    className="btn btn-lg btn-primary btn-block"  id="RegButton"
-                                   disabled={this.state.username.length < 6, this.state.password.length < 8, this.state.answer.length < 1, this.state.password!=this.state.repassword}>
-                                Register
+                                   disabled={this.state.username.length < 6, this.state.password.length < 8, this.state.password!=this.state.repassword, this.state.answer.length < 1}>
+                                Registrar
                             </button>
                             <script>console.log(this.state.email)</script>
                         </form>

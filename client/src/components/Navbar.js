@@ -1,12 +1,27 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import logo from '../logo.png'
+import jwt_decode from 'jwt-decode'
 
 class Navbar extends Component {
+    constructor() { 
+    super() 
+        this.state = { 
+        username: '' } 
+    }
     logOut(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
         this.props.history.push(`/`)
+    }
+
+    componentDidMount () {
+        if(localStorage.usertoken) {
+          this.setState({
+              username: jwt_decode(localStorage.usertoken).username
+          })
+         }
+         console.log(this.state.username)
     }
 
     render() {
@@ -44,6 +59,26 @@ class Navbar extends Component {
             </ul>
         )
 
+        const adminLink = (
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/profileadmin" className="nav-link">
+                        Perfil de Administrador
+                    </Link>
+                </li>         
+                <li className="nav-item">
+                    <Link to="/newpost" className="nav-link">
+                        Crear Publicación
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                        Cerrar Sesión
+                    </a>
+                </li>
+            </ul>
+        )
+
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
                 <button className="navbar-toggler"
@@ -56,18 +91,24 @@ class Navbar extends Component {
                     <span className="navbar-toggle-icon"></span>
                 </button>
 
-                <div className="collapse navbar-collapse justify-content-md-center"
+                <div className="collapse navbar-collapse"
                     id="navbar1">
+                    <Link to="/" className="nav-link">
+                        <img src={logo} alt="site logo" className="navbarLogo"/>
+                    </Link>
                     
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
-                                <img src={logo} alt="site logo" className="navbarLogo"/>
                                 Inicio
                             </Link>
+                            {/*<Link to="/ProfileAdmin" className="nav-link">
+                                Admin
+                            </Link>*/}
                         </li>
                     </ul>
                     {localStorage.usertoken ? userLink : loginRegLink}
+                    {this.state.username !== 'feofeo' && adminLink}
                 </div>
             </nav>
         )
