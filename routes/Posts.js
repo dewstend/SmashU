@@ -76,7 +76,37 @@ posts.get('/last/:nPosts', (req, res, next) => {
         })
 })
 
+// Delete
+posts.delete('/:posts_Id', (req, res) => {
 
+    Post.destroy(
+        {
+          where: { 
+            id: req.params.posts_Id
+            }
+        }
+    )
+    .then(deleted => {
+        res.json(
+            (deleted) ?
+            "Deleted successfuly" :
+            "Deleted unsuccessfully"
+        )
+    })
+  })
 
+posts.delete('/:id/comments', (req, res, next) => {
+    Lurker.deleteCommentsByPostsId(req.params.id)
+    .then(comments => {
+            if (comments) {
+               res.json(comments)
+            } else {
+                throw "Post does not exist"
+            }
+        })
+        .catch(err => {
+            throw err
+        })
+})
 
 module.exports = posts

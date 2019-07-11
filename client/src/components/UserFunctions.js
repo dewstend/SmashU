@@ -103,3 +103,28 @@ export const getPostsByUsersId = users_Id => {
             console.log(err)
         })*/
 }
+
+export const getTotalPosts = () => {
+    return axios
+        .get('/api/totalPosts')
+}
+
+export const getTotalUsers = () => {
+    return axios
+        .get('/api/totalUsers')
+}
+
+export const deletePostById = posts_Id => {
+    return axios
+        .delete('/posts/' + posts_Id)
+}
+
+export const deleteCommentById = comments_Id => {
+    return axios
+        .delete('/comments/' + comments_Id)
+}
+
+export const deleteAllCommentsInPostById = posts_Id => {
+    return axios
+        .delete('/posts/'+ posts_Id +'/comments')
+}

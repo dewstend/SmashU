@@ -28,17 +28,19 @@ class NewComment extends Component {
         }
         createComment(comment).then(res => {
                 if (res) {
-                    console.log(res)
-                    this.props.history.push(`/`)
+                    this.setState(
+                        {
+                            content: ''
+                        }
+                    )
+                    console.log(res.data)
+                    this.props.callback()
                 }
             }
         )
         .catch(err => {
             console.log(err)
         })
-        this.state = {
-            content: ''
-        }
     }
 
     render () {

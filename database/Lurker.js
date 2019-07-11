@@ -76,6 +76,14 @@ const getCommentsByPostsId = (p) => {
     })
 }
 
+const deleteCommentsByPostsId = (p) => {
+    return Comment.destroy({
+        where: {
+            posts_id: p
+        }
+    })
+}
+
 const getTotalUsers = () => {
     return User
         .findAndCountAll()
@@ -90,6 +98,7 @@ module.exports = {
     getPostsByUsersId,
     getPostById,
     getCommentsByPostsId,
+    deleteCommentsByPostsId,
     getLastNPosts,
     getTotalUsers,
     getTotalPosts

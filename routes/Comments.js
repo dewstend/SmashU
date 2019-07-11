@@ -29,5 +29,23 @@ comments.post('/new', (req, res) => {
                         })
 })
 
+// Delete
+comments.delete('/:comments_Id', (req, res) => {
+
+    Comment.destroy(
+        {
+          where: { 
+            id: req.params.comments_Id
+            }
+        }
+    )
+    .then(deleted => {
+        res.json(
+            (deleted) ?
+            "Deleted successfuly" :
+            "Deleted unsuccessfully"
+        )
+    })
+  })
 
 module.exports = comments

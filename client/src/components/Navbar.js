@@ -7,8 +7,8 @@ class Navbar extends Component {
     constructor() { 
         super() 
             this.state = { 
-            username: '' 
-        } 
+                username: '' 
+            } 
     }
     
     logOut(e) {
@@ -109,8 +109,9 @@ class Navbar extends Component {
                             </Link>*/}
                         </li>
                     </ul>
-                    {localStorage.usertoken ? userLink : loginRegLink}
-                    {this.state.username == 'admin' && adminLink}
+                    {(localStorage.usertoken) 
+                        ? ((jwt_decode(localStorage.usertoken).username === "admin") ? (adminLink) : (userLink)) 
+                        : (loginRegLink)}
                 </div>
             </nav>
         )

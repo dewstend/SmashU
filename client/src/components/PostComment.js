@@ -10,11 +10,21 @@ const PostComment = (props) => {
                                 <td className= "CommentContent">{props.data.content}</td>
                             </tr>
                             <tr>
-                                <td className="CommentAuthor">Author: {props.data.user.username}
+                                <td className="CommentAuthor">Autor: {props.data.user.username}
                                 </td>
                             </tr>
-                            <button title="Edit your post" className="EditButtonC"></button>
-                            <button type= "button" title="Delete your post"  className="DeleteButtonC"></button>
+                            {/*<button title="Edit your post" className="EditButtonC"></button>*/}
+                            
+                            {   props.deleteThis &&
+                                <button 
+                                    type= "button" 
+                                    title="Delete your post" 
+                                    className="DeleteButtonC"
+                                    onClick={() => {
+                                        props.deleteThis(props.data.id)
+                                    }}
+                                ></button>
+                            }
                         </tbody>
                     </table>
         </div>

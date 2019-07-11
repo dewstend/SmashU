@@ -4,14 +4,16 @@ import jwt_decode from 'jwt-decode'
 import { Link, withRouter } from 'react-router-dom'
 
 import PreviewPost from './PreviewPost'
-import {getPostsByUsersId} from './UserFunctions'
+import {getPostsByUsersId, getTotalPosts, getTotalUsers} from './UserFunctions'
 
 class ProfileAdmin extends Component {
     constructor() {
         super()
         this.state = {
             username: '',
-            lastPosts: []
+            lastPosts: [],
+            totalPosts: '',
+            totalUsers: ''
         }
     }
 
@@ -28,9 +30,23 @@ class ProfileAdmin extends Component {
                 {
                     lastPosts: res.data
                 }
-                
             )
-            console.log(res)
+        })
+        getTotalUsers()
+        .then(res => {
+            this.setState(
+                {
+                    totalUsers: res.data
+                }
+            )
+        })
+        getTotalPosts()
+        .then(res => {
+            this.setState(
+                {
+                    totalPosts: res.data
+                }
+            )
         })
     }
 
@@ -69,7 +85,6 @@ class ProfileAdmin extends Component {
                                     })}
                                 </div>
                             </div>
-                      
                             <div className="tab-pane justify-content-center" id="repor">
                                 <table className="table center">
                                     <thead className="thead-dark">
@@ -80,8 +95,16 @@ class ProfileAdmin extends Component {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>0</td>
-                                            <td>0</td>
+                                            <td>
+                                                {
+                                                    this.state.totalUsers
+                                                }
+                                            </td>
+                                            <td>
+                                                {
+                                                    this.state.totalPosts
+                                                }
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

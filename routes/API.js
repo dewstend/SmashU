@@ -8,15 +8,22 @@ api.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
-api.get('/totalPosts', (req, res, next) => {
+api.get('/totalUsers', (req, res, next) => {
 
     Lurker.getTotalUsers()
     .then(result => {
-            res.json(
-                {
-                    totalUsers: result.count
-                }
-            )
+            res.json(result.count)
+        })
+    .catch(err => {
+        res.json(err)
+    })
+})
+
+api.get('/totalPosts', (req, res, next) => {
+
+    Lurker.getTotalPosts()
+    .then(result => {
+            res.json(result.count)
         })
     .catch(err => {
         res.json(err)
