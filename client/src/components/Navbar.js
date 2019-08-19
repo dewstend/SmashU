@@ -8,7 +8,7 @@ class Navbar extends Component {
         super() 
             this.state = { 
                 username: '' 
-            } 
+            }
     }
     
     logOut(e) {
@@ -23,7 +23,6 @@ class Navbar extends Component {
                 username: jwt_decode(localStorage.usertoken).username
             })
         }
-        console.log(this.state.username)
     }
 
     render() {
@@ -83,6 +82,7 @@ class Navbar extends Component {
 
         return (
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+                <img src={logo} alt="site logo" className="navbarLogo"/>
                 <button className="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
@@ -90,13 +90,12 @@ class Navbar extends Component {
                     aria-controls="navbar1"
                     aria-expanded="false"
                     aria-label="Toggle navigation">
-                    <span className="navbar-toggle-icon"></span>
+                    <span className="navbar-toggle-icon">O</span>
                 </button>
 
                 <div className="collapse navbar-collapse"
                     id="navbar1">
                     <Link to="/" className="nav-link">
-                        <img src={logo} alt="site logo" className="navbarLogo"/>
                     </Link>
                     
                     <ul className="navbar-nav">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 
-import { Link, withRouter } from 'react-router-dom'
+import { Link  } from 'react-router-dom'
 
 import PreviewPost from './PreviewPost'
 import {getPostsByUsersId} from './UserFunctions'
@@ -28,7 +28,6 @@ class Profile extends Component {
                 {
                     lastPosts: res.data
                 }
-                
             )
         })
     }
@@ -51,9 +50,9 @@ class Profile extends Component {
                     <h1 className="text-center">Publicaciones por este usuario</h1>
                     <div className="latest-posts">
                         {this.state.lastPosts && this.state.lastPosts.map((post, index) => {
-                        return <Link to={`/posts/` + post.id} key={index}>
+                        return <Link to={`/posts/` + post._id} key={index}>
                             <PreviewPost 
-                                 data={post}
+                                 post={post}
                                  key={index}
                                 />
                                 </Link>

@@ -11,7 +11,6 @@ import NewPost from './components/NewPost'
 import ViewPost from './components/ViewPost'
 import ModifyPost from './components/ModifyPost'
 import Forgot from './components/Forgot'
-import ForgotCorrect from './components/ForgotCorrect'
 import Footer from './components/Footer'
 
 class App extends Component {
@@ -30,7 +29,6 @@ class App extends Component {
             <Route exact path="/posts/:posts_id" component={ViewPost} />
             <Route exact path="/modifypost/:posts_id" component={ModifyPost} />
             <Route exact path="/forgot" component={Forgot} />
-            <Route exact path="/forgotcorrect" component={ForgotCorrect} />
           </div>
           <Footer />
         </div>

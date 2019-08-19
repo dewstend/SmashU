@@ -1,36 +1,26 @@
-const Sequelize = require("sequelize")
-const db = require("../database/db")
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-module.exports = db.sequelize.define(
-    'comment',
-    {
-        id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-            allowNull: false,
-        },
-        content: {
-            type: Sequelize.STRING
-        },
-        users_id: {
-            allowNull: false,
-            type: Sequelize.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        posts_id: {
-            allowNull: false,
-            type: Sequelize.INTEGER,
-            references: {
-                model: 'post',
-                key: 'id'
-            }
-        }
-    },
-    {
-        timestamps: false
-    }
-)
+// Create Schema
+const CommentSchema = new Schema({
+  content: {
+    type: String,
+    required: true
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'user',
+    required: true
+  },
+  post: {
+    type: Schema.Types.ObjectId, 
+    ref: 'post',
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+})
+
+module.exports = Comment = mongoose.model('comment', CommentSchema)

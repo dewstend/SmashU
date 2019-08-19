@@ -1,25 +1,31 @@
 {
   "name": "smashu",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "engines": {
+    "yarn": "1.x"
+  },
+  "description": "Smash-related boards page built with the MERN stack",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js --ignore client/"
+    "server": "nodemon server.js --ignore client/",
+    "client": "yarn --cwd \"client\" start",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn --cwd \"client\" install && yarn --cwd \"client\" build"
   },
-  "author": "",
+  "author": "Dewstend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dewstend/smashu.git"
+  },
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
-    "bcrypt": "^3.0.6",
-    "body-parser": "^1.17.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "concurrently": "^4.1.1",
-    "cors": "^2.8.4",
     "dotenv": "^8.0.0",
     "express": "^4.16.3",
     "jsonwebtoken": "^7.4.2",
     "jwt-decode": "^2.2.0",
-    "react-router-dom": "^4.3.1",
-    "sequelize": "^5.9.0",
-    "sqlite3": "^4.0.9"
+    "mongoose": "^5.6.9"
   }
 }

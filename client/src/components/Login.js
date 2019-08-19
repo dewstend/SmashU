@@ -6,7 +6,7 @@ class Login extends Component {
     constructor() {
         super()
         this.state = {
-            email: '',
+            username: '',
             password: ''
         }
 
@@ -20,19 +20,20 @@ class Login extends Component {
 
     onSubmit (e) {
         e.preventDefault()
-
         const user = {
             username: this.state.username,
             password: this.state.password
         }
-
-        login(user).then(res => {
-            if (res) {
+        login(user).then(result => {
+            if (result) {
                 if(user.username === "admin") {
                     this.props.history.push(`/profileadmin`)
                 } else {
                     this.props.history.push(`/profile`)
                 }
+            }
+            else {
+                console.log("Login failed.")
             }
         })
     }
@@ -71,7 +72,7 @@ class Login extends Component {
                             */}
                             <button type="submit"
                                 className="btn btn-lg btn-primary btn-block"
-                                disabled={this.state.username < 6, this.state.password.length < 8}>
+                                disabled={this.state.username < 6 || this.state.password.length < 8}>
                                 Ingresar
                             </button>
                         </form>

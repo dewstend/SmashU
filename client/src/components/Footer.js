@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const Footer = () => {
     return (
@@ -12,7 +12,7 @@ const Footer = () => {
                     ·
                     <a to="/newpost">Crear Publicación </a>*/}
                 </p>
-                <p className="footer-company-name">Smash University &copy; 2019</p>
+                <p className="footer-company-name">Smash University</p>
             </div>
             <div className="footer-center">
                 <div>
@@ -21,11 +21,11 @@ const Footer = () => {
                 </div>
                 <div>
                     <i className="fa fa-phone"></i>
-                    <p>+58 424 6794565</p>
+                    <p>+XX XXX XXXXXX</p>
                 </div>
                 <div>
                     <i className="fa fa-envelope"></i>
-                    <p><a href="mailto:retrogaming@support.com">smashuniversity@support.com</a></p>
+                    <p><a href="mailto:mail@mail.com">mail@mail.com</a></p>
                 </div>
             </div>
             <div className="footer-right">
@@ -34,9 +34,9 @@ const Footer = () => {
                     Dedicados a brindarle a la comunidad competitiva de Smash Ultimate un espacio para compartir nuevos descubrimientos acerca de sus personajes preferidos.
                 </p>
                 <div className="footer-icons">
-                    <a href="http://facebook.com" target="_blank"><i className="fa fa-facebook"></i></a>
-                    <a href="http://twitter.com" target="_blank"><i className="fa fa-twitter"></i></a>
-                    <a href="http://instagram.com" target="_blank"><i className="fa fa-instagram"></i></a>
+                    <a href="http://facebook.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-facebook"></i></a>
+                    <a href="http://twitter.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-twitter"></i></a>
+                    <a href="http://instagram.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-instagram"></i></a>
                 </div>
             </div>
         </footer>

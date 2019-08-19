@@ -33,7 +33,7 @@ export const createPost = newPost => {
             title: newPost.title,
             content: newPost.content,
             tag: newPost.tag,
-            users_id: newPost.users_id
+            user: newPost.user
         })
 }
 
@@ -41,8 +41,8 @@ export const createComment = newComment => {
     return axios
         .post('/comments/new', {
             content: newComment.content,
-            posts_id: newComment.posts_id,
-            users_id: newComment.users_id
+            post: newComment.post,
+            user: newComment.user
         })
         .catch(err => {
             console.log(err)

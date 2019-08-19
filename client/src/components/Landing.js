@@ -5,6 +5,8 @@ import PreviewPost from './PreviewPost'
 
 import {getLastNPosts} from './UserFunctions'
 
+import header from '../background.jpg'
+
 class Landing extends Component {
     constructor(props) {
         super(props)
@@ -23,7 +25,7 @@ class Landing extends Component {
             )
         })
         .catch(err => {
-            console.log(err)
+            console.log("Failed to fetch last posts")
         })      
 
     }
@@ -32,20 +34,17 @@ class Landing extends Component {
     render () {
         return (
             <div className="container">
-                <div id= "LandJumbo" className="jumbotron">
-                    <div className="col-sm-8 mx-auto">
-                        <h1 className="text-center" >BIENVENIDO</h1>
-                    </div>
-                </div>
+                <img src={header} alt="site header" className="landingHeader"/>
                 {/*<div className="jumbotron mt-5"> comentario*/}
                     <div className="col-sm-8 mx-auto">
                         <h1 className="text-center">Últimas Publicaciones</h1>
 
                         <div className="latest-posts">
                             {this.state.lastPosts && this.state.lastPosts.map((post, index) => {
-                                return <Link to={`/posts/` + post.id} key={index}>
+                                //TODO: FIX Cast to ObjectId error post._id
+                                return <Link to={`/posts/` + post._id} key={index}>
                                     <PreviewPost 
-                                        data={post}
+                                        post={post}
                                         key={index}
                                         />
                                     </Link>

@@ -3,34 +3,11 @@ import jwt_decode from 'jwt-decode'
 
 import PostComment from './PostComment'
 
-import NewCommnent from './NewComment'
+import NewComment from './NewComment'
 
 import { getPostById, getCommentsByPostsId, deletePostById, deleteCommentById, deleteAllCommentsInPostById } from './UserFunctions'
 
-import { Link, withRouter } from 'react-router-dom'
-
-const swal = require('sweetalert2')
-
-
-function ConfirmDelete(){
-	swal.fire({   title: "This post will be deleted permanently!",   
-    text: "Are you sure to proceed?",   
-    type: "warning",   
-    showCancelButton: true,   
-    confirmButtonColor: "#DD6B55",   
-    confirmButtonText: "Yes, Remove the post!",   
-    cancelButtonText: "No, I am not sure!",   
-    closeOnConfirm: false,   
-    closeOnCancel: false }, 
-    function(isConfirm){   
-        if (isConfirm) 
-    {   
-        swal.fire("Account Removed!", "Your account is removed permanently!", "success");   
-        } 
-        else {     
-            swal.fire("Hurray", "Account is not removed!", "error");   
-            } })
-}
+import { withRouter } from 'react-router-dom'
 
 class ViewPost extends Component {
     constructor(props) {
@@ -63,14 +40,14 @@ class ViewPost extends Component {
         if(this.state.comments) {
             deleteAllCommentsInPostById(this.props.match.params.posts_id)
             .then(res => {
-                console.log(res)
+                console.log("Post deleted successfully!")
                 this.getComments()
             })
             .catch(err => console.log(err) )
         }
         deletePostById(this.props.match.params.posts_id)
         .then(res => {
-            console.log(res)
+            console.log("Post deleted successfully!")
             this.props.history.push(`/`)
         })
         .catch(err => console.log(err) )
@@ -79,7 +56,7 @@ class ViewPost extends Component {
     onCommentDelete (comments_Id) {
         deleteCommentById(comments_Id)
         .then(res => {
-            console.log(res)
+            console.log("Comment deleted successfully!")
             this.getComments()
         })
         .catch(err => console.log(err) )
@@ -143,7 +120,7 @@ class ViewPost extends Component {
                 {
                     localStorage.usertoken &&
                     <div className="jumbotron bg-white text-black mt-5">
-                        <NewCommnent posts_id={this.state.post.id} history={this.props.history} callback={this.getComments}/>
+                        <NewComment posts_id={this.props.match.params.posts_id} history={this.props.history} callback={this.getComments}/>
                     </div>
                 }
 

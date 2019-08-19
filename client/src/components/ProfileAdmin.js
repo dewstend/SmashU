@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 
-import { Link, withRouter } from 'react-router-dom'
+import { Link  } from 'react-router-dom'
 
 import PreviewPost from './PreviewPost'
 import {getPostsByUsersId, getTotalPosts, getTotalUsers} from './UserFunctions'

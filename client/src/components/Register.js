@@ -7,7 +7,8 @@ class Register extends Component {
         this.state = {
             username: '',
             answer: '',
-            password: ''
+            password: '',
+            repassword: ''
         }
 
         this.onChange = this.onChange.bind(this)
@@ -91,7 +92,6 @@ class Register extends Component {
                                    disabled={this.state.username.length < 6 || this.state.password.length < 8 || this.state.password !== this.state.repassword || this.state.answer.length < 1}>
                                 Registrar
                             </button>
-                            <script>console.log(this.state.email)</script>
                         </form>
                     </div>
                 </div>

@@ -34,13 +34,9 @@ constructor() {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    //TODO: Implement
     onSubmit (e) {
         e.preventDefault()
-
-        const user = {
-            username: this.state.username,
-            answer: this.state.answer
-        }
 
     }
 
@@ -73,7 +69,7 @@ constructor() {
                             </div>
                             <button type="submit"
                                 className="btn btn-lg btn-primary btn-block"
-                                disabled={this.state.username < 6, this.state.answer.length < 1}>
+                                disabled={this.state.username < 6 || this.state.answer.length < 1}>
                                 Enviar
                             </button>
                         </form>

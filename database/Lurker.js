@@ -18,81 +18,44 @@ const User = require("../models/User")
 
 */
 
-
-User.hasMany(Post, {foreignKey: 'users_id'})
-Post.belongsTo(User, {foreignKey: 'users_id'})
-
-User.hasMany(Comment, {foreignKey: 'users_id'})
-Comment.belongsTo(User, {foreignKey: 'users_id'})
-
-Post.hasMany(Comment, {foreignKey: 'posts_id'})
-Comment.belongsTo(Post, {foreignKey: 'posts_id'})
-
+// Posts 
 const getPostsByUsersId = (u) => {
-	return Post.findAll({
-        where: {
-            users_id: u
-        },
-        include: [{
-            model: User,
-            attributes: ['username']
-        }]
-    })
+	return Post.find({ user: u })
+        .populate('user', ['username'])
 }
 
 const getPostById = (p) => {
-    return Post.findOne({
-        where: {
-            id: p
-        },
-        include: [{
-            model: User,
-            attributes: ['username']
-        }]
-
-    })
+    return Post.findOne({ _id: p })
+        .populate('user', ['username'])
 }
 
 const getLastNPosts = (nPosts) => {
-    return Post.findAll({
-      limit: parseInt(nPosts, 10),
-      order: [ [ 'id', 'DESC' ]],
-      include: [{
-            model: User,
-            attributes: ['username']
-        }]
-  }) 
-}
-
-const getCommentsByPostsId = (p) => {
-    return Comment.findAll({
-        where: {
-            posts_id: p
-        },
-        include: [{
-            model: User,
-            attributes: ['username']
-        }]
-    })
-}
-
-const deleteCommentsByPostsId = (p) => {
-    return Comment.destroy({
-        where: {
-            posts_id: p
-        }
-    })
-}
-
-const getTotalUsers = () => {
-    return User
-        .findAndCountAll()
+    return Post.find()
+        .populate('user', ['username'])
+        .sort({'date': -1})
+        .limit(parseInt(nPosts, 10))
 }
 
 const getTotalPosts = () => {
-    return Post
-        .findAndCountAll()
+    return Post.estimatedDocumentCount()
 }
+
+// Comments
+const getCommentsByPostsId = (p) => {
+    return Comment.find({ post: p })
+        .populate('user', ['username'])
+}
+
+const deleteCommentsByPostsId = (p) => {
+    return Comment.deleteMany({ post: p }, (err) => console.log(err))
+}
+
+// Users
+const getTotalUsers = () => {
+    return User.estimatedDocumentCount()
+}
+
+
 
 module.exports = {
     getPostsByUsersId,

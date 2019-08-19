@@ -1,17 +1,23 @@
 import React from 'react'
 
 const PreviewPost = (props) => {
-	return (
+    return (
 		<div className= "PreviewPost">
             <div className="PreviewAuthorTag">
                 <span className="author">Author: {
-                    props.data.user.username
+                    props.post.user.username
                 }</span>
-                <span>Character: {props.data.tag}</span>
+                <span>Character: {
+                    props.post.tag
+                }</span>
             </div>
-        	<div className= "PreviewTitle" href="#"><h5>{props.data.title}</h5></div>
+        	<div className= "PreviewTitle" href="#">
+                <h5>{ 
+                    props.post.title
+                }</h5>
+            </div>
         </div>
-		)
+	)
 }
 
 export default PreviewPost

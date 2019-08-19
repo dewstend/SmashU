@@ -2,14 +2,8 @@ const Lurker = require("../database/Lurker")
 
 const express = require("express")
 const posts = express.Router()
-const cors = require('cors')
 
 const Post = require("../models/Post")
-
-
-posts.use(cors())
-
-process.env.SECRET_KEY = 'secret'
 
 posts.post('/new', (req, res) => {
     
@@ -17,7 +11,7 @@ posts.post('/new', (req, res) => {
         title: req.body.title,
         content: req.body.content,
         tag: req.body.tag,
-        users_id: req.body.users_id
+        user: req.body.user
     }
 
     Post.create(postData)
@@ -25,7 +19,7 @@ posts.post('/new', (req, res) => {
                             res.json(
                                 { 
                                     status: post.title + ' posted',
-                                    posts_id: post.id
+                                    post: post.id
                                 }
                             )
                         })
@@ -40,11 +34,12 @@ posts.get('/:posts_Id', (req, res, next) => {
             if (post) {
                res.send(post)
             } else {
-                throw "Post does not exist"
+                res.send("Post does not exist")
             }
         })
         .catch(err => {
-            throw err
+            console.log(err)
+            res.send(err)
         })
 })
 
@@ -54,11 +49,11 @@ posts.get('/:id/comments', (req, res, next) => {
             if (comments) {
                res.send(comments)
             } else {
-                throw "Post does not exist"
+                res.send("Post does not exist")
             }
         })
         .catch(err => {
-            throw err
+            console.log(err)
         })
 })
 
@@ -68,24 +63,18 @@ posts.get('/last/:nPosts', (req, res, next) => {
             if (posts) {
                res.send(posts)
             } else {
-                throw "No posts"
+                res.send("No posts")
             }
         })
         .catch(err => {
-            throw err
+            console.log(err)
         })
 })
 
 // Delete
 posts.delete('/:posts_Id', (req, res) => {
 
-    Post.destroy(
-        {
-          where: { 
-            id: req.params.posts_Id
-            }
-        }
-    )
+    Post.findByIdAndDelete(req.params.posts_Id)
     .then(deleted => {
         res.json(
             (deleted) ?
@@ -93,7 +82,7 @@ posts.delete('/:posts_Id', (req, res) => {
             "Deleted unsuccessfully"
         )
     })
-  })
+})
 
 posts.delete('/:id/comments', (req, res, next) => {
     Lurker.deleteCommentsByPostsId(req.params.id)
@@ -101,11 +90,11 @@ posts.delete('/:id/comments', (req, res, next) => {
             if (comments) {
                res.json(comments)
             } else {
-                throw "Post does not exist"
+                res.send("Post does not exist")
             }
         })
         .catch(err => {
-            throw err
+            console.log(err)
         })
 })
 

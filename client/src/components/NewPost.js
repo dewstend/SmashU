@@ -10,9 +10,8 @@ class NewPost extends Component {
             title: '',
             content: '',
             tag: '',
-            users_id: jwt_decode(localStorage.usertoken).id
+            user: jwt_decode(localStorage.usertoken).id
         }
-
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -27,7 +26,7 @@ class NewPost extends Component {
             title: this.state.title,
             content: this.state.content,
             tag: this.state.tag,
-            users_id: this.state.users_id
+            user: this.state.user
         }
         createPost(post).then(res => {
                 if (res) {
@@ -63,7 +62,7 @@ class NewPost extends Component {
                                     value={this.state.tag}
                                     onChange={this.onChange}
                                 >
-                                <option value="" disabled selected>Select your option</option>
+                                <option value="" disabled defaultValue>Select your option</option>
                                 <option>Mario</option>
                                 <option>Kirby</option>
                                 <option>Palutena</option>
@@ -85,7 +84,7 @@ class NewPost extends Component {
                             <br/>                        
                             <button type="submit"
                                 className="btn btn-lg btn-primary btn-block"
-                                disabled={this.state.title < 6, this.state.content < 1}>
+                                disabled={this.state.title < 6 || this.state.content < 1}>
                                 Submit
                             </button>
                         </form>

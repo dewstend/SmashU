@@ -8,9 +8,8 @@ class NewComment extends Component {
         super(props)
         this.state = {
             content: '',
-            users_id: jwt_decode(localStorage.usertoken).id
+            user: jwt_decode(localStorage.usertoken).id
         }
-
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -23,8 +22,8 @@ class NewComment extends Component {
         e.preventDefault()
         const comment = {
             content: this.state.content,
-            posts_id: this.props.posts_id,
-            users_id: this.state.users_id
+            post: this.props.posts_id,
+            user: this.state.user
         }
         createComment(comment).then(res => {
                 if (res) {
