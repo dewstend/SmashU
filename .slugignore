@@ -1,0 +1,5 @@
+# Deployment doesn't need this.
+*.env
+*.md
+*.log
+*.sublime*
