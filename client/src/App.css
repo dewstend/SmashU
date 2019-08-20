@@ -11,6 +11,7 @@ body {
     border-radius: 0.8em;
     color: #222222;
     background: #ffffff;
+    margin-bottom: 1em;
 }
 
 .PreviewTitle{
@@ -165,7 +166,6 @@ body {
 }
 
 .footer-distributed .footer-left{
-    margin-left: 10%;
     width: 30%;
 }
 
@@ -190,9 +190,9 @@ body {
 
 .footer-distributed .footer-company-name{
     color:  #8f9296;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: normal;
-    margin: 0;
+    text-align: center;
 }
 
 .footer-distributed .footer-center{
